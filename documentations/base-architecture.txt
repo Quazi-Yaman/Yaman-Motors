@@ -1,0 +1,24 @@
+YAMAN-MOTORS/
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── backend/
+│   ├── app.py
+│   ├── database.py
+│   ├── vendors.py
+│   ├── customers.py
+│   ├── products.py
+│   ├── purchases.py
+│   ├── sales.py
+│   ├── invoices.py
+│   ├── payments.py
+│   ├── inventory.py
+│   └── reports.py
+│
+└── ai/
+    ├── gemini.py
+    ├── ai_tools.py
+    └── ai_prompts.py

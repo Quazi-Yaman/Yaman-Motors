@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAMAN MOTORS - Factory Billing Documentation</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #eef2f6;
+        color: #243447;
+        line-height: 1.6;
+    }
+
+    .container {
+        width: 1100px;
+        max-width: 94%;
+        margin: 30px auto;
+        background: white;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    header {
+        background: #173F5F;
+        color: white;
+        padding: 45px 55px;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 38px;
+    }
+
+    header p {
+        margin: 8px 0 0;
+        font-size: 18px;
+    }
+
+    main {
+        padding: 45px 55px;
+    }
+
+    h2 {
+        color: #173F5F;
+        margin-top: 45px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #3CAEA3;
+    }
+
+    h3 {
+        color: #173F5F;
+        margin-top: 28px;
+    }
+
+    .summary {
+        background: #f4f8fa;
+        border-left: 5px solid #3CAEA3;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    .flow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 0;
+    }
+
+    .flow-box {
+        width: 650px;
+        max-width: 90%;
+        padding: 18px;
+        text-align: center;
+        border: 2px solid #173F5F;
+        border-radius: 10px;
+        background: white;
+    }
+
+    .flow-box strong {
+        display: block;
+        font-size: 18px;
+        color: #173F5F;
+    }
+
+    .arrow {
+        font-size: 28px;
+        color: #3CAEA3;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .card {
+        border: 1px solid #d9e2ea;
+        border-radius: 10px;
+        padding: 20px;
+        background: white;
+    }
+
+    .card h3 {
+        margin-top: 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    th,
+    td {
+        border: 1px solid #d9e2ea;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background: #173F5F;
+        color: white;
+    }
+
+    .architecture {
+        background: #101820;
+        color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        font-family: Consolas, monospace;
+        white-space: pre;
+        overflow-x: auto;
+        line-height: 1.5;
+    }
+
+    .important {
+        background: #fff8e8;
+        border-left: 5px solid #e0a800;
+        padding: 18px;
+        margin: 20px 0;
+    }
+
+    footer {
+        background: #f4f8fa;
+        padding: 25px;
+        text-align: center;
+        color: #607080;
+    }
+
+    [contenteditable="true"]:focus {
+        outline: 2px dashed #3CAEA3;
+        outline-offset: 3px;
+    }
+
+    @media(max-width: 750px) {
+
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        header,
+        main {
+            padding: 30px 22px;
+        }
+
+        .flow-box {
+            width: 100%;
+        }
+    }
+
+    @media print {
+
+        body {
+            background: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            box-shadow: none;
+        }
+
+        header {
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+
+        th {
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header contenteditable="true">
+
+    <h1>YAMAN MOTORS</h1>
+
+    <p>
+        Factory Billing & Business Management System
+    </p>
+
+    <p style="font-size:14px;">
+        Project Documentation • System Flow • AWS Architecture • Interface
+    </p>
+
+</header>
+
+
+<main contenteditable="true">
+
+
+<!-- =====================================================
+     1. SUMMARY
+===================================================== -->
+
+<h2>1. Project Summary</h2>
+
+<div class="summary">
+
+    <strong>YAMAN MOTORS</strong> is a centralized factory billing and
+    business management system designed to manage the major business
+    operations of a factory through one web-based interface.
+
+    <br><br>
+
+    The system connects:
+
+    <strong>
+        Vendors, Customers, Products, Purchases, Sales,
+        Invoices, Payments, Inventory and Reports.
+    </strong>
+
+</div>
+
+<p>
+The main objective is to reduce manual work, centralize business data,
+connect related transactions and provide a single platform for managing
+factory billing operations.
+</p>
+
+
+<!-- =====================================================
+     2. SYSTEM OVERVIEW
+===================================================== -->
+
+<h2>2. System Overview</h2>
+
+<div class="flow">
+
+    <div class="flow-box">
+        <strong>User</strong>
+        Employee or administrator accesses the YAMAN MOTORS system.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Web Interface</strong>
+        User manages vendors, customers, products, purchases,
+        sales, invoices, payments and inventory.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Backend</strong>
+        Processes requests and applies business logic.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Database</strong>
+        Stores the application's business information.
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     3. COMPLETE BUSINESS FLOW
+===================================================== -->
+
+<h2>3. Complete Business Flow</h2>
+
+<div class="architecture">
+
+                         YAMAN MOTORS
+                              |
+                              v
+                           USER
+                              |
+                              v
+                     WEB INTERFACE
+                              |
+                              v
+                       BACKEND / API
+                              |
+            +-----------------+-----------------+
+            |                 |                 |
+            v                 v                 v
+         VENDOR            CUSTOMER          PRODUCT
+            |                 |                 |
+            v                 v                 |
+        PURCHASE            SALES              |
+            |                 |                 |
+            +--------+--------+-----------------+
+                     |
+                     v
+                  INVOICE
+                     |
+                     v
+                  PAYMENT
+                     |
+                     v
+                 INVENTORY
+                     |
+                     v
+                  REPORTS
+
+</div>
+
+
+<!-- =====================================================
+     4. INTERFACE
+===================================================== -->
+
+<h2>4. Application Interface</h2>
+
+<p>
+The application is divided into modules so that each business activity
+has its own dedicated section.
+</p>
+
+<table>
+
+<tr>
+    <th>Module</th>
+    <th>Purpose</th>
+</tr>
+
+<tr>
+    <td>Dashboard</td>
+    <td>
+        Provides an overall view of sales, purchases, invoices,
+        payments, inventory and recent activities.
+    </td>
+</tr>
+
+<tr>
+    <td>Vendors</td>
+    <td>
+        Stores and manages supplier information.
+    </td>
+</tr>
+
+<tr>
+    <td>Customers</td>
+    <td>
+        Stores and manages customer information.
+    </td>
+</tr>
+
+<tr>
+    <td>Products</td>
+    <td>
+        Maintains product and item master information.
+    </td>
+</tr>
+
+<tr>
+    <td>Purchases</td>
+    <td>
+        Records products purchased from vendors.
+    </td>
+</tr>
+
+<tr>
+    <td>Sales</td>
+    <td>
+        Records products sold to customers.
+    </td>
+</tr>
+
+<tr>
+    <td>Invoices</td>
+    <td>
+        Manages billing documents and invoice information.
+    </td>
+</tr>
+
+<tr>
+    <td>Payments</td>
+    <td>
+        Tracks payments made to vendors and received from customers.
+    </td>
+</tr>
+
+<tr>
+    <td>Inventory</td>
+    <td>
+        Tracks stock movement and available quantity.
+    </td>
+</tr>
+
+<tr>
+    <td>Reports</td>
+    <td>
+        Provides consolidated business information for management.
+    </td>
+</tr>
+
+</table>
+
+
+<!-- =====================================================
+     5. MODULE STRUCTURE
+===================================================== -->
+
+<h2>5. Main Modules</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>Vendors</h3>
+
+        <p>
+            Vendor master containing vendor number, name, address,
+            contact details and billing information.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h3>Customers</h3>
+
+        <p>
+            Customer master used for sales and customer billing.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h3>Products</h3>
+
+        <p>
+            Central product master containing product codes,
+            names, units and pricing information.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h3>Purchases</h3>
+
+        <p>
+            Records purchases made from vendors and connects
+            purchasing with invoices and inventory.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h3>Sales</h3>
+
+        <p>
+            Records customer sales and connects sales with
+            invoices, payments and inventory.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h3>Invoices</h3>
+
+        <p>
+            Handles vendor and customer billing information.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h3>Payments</h3>
+
+        <p>
+            Tracks vendor payments and customer receipts.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h3>Inventory</h3>
+
+        <p>
+            Maintains stock levels based on purchases and sales.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     6. PURCHASE FLOW
+===================================================== -->
+
+<h2>6. Purchase Flow</h2>
+
+<div class="flow">
+
+    <div class="flow-box">
+        <strong>Vendor</strong>
+        Supplier provides products or materials.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Purchase</strong>
+        User creates a purchase transaction.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Purchase Items</strong>
+        Product, quantity and rate are recorded.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Invoice</strong>
+        Billing amount, tax, discount and total are recorded.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Inventory</strong>
+        Purchased quantity is added to stock.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Payment</strong>
+        Vendor payable and payment status are tracked.
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     7. SALES FLOW
+===================================================== -->
+
+<h2>7. Sales Flow</h2>
+
+<div class="flow">
+
+    <div class="flow-box">
+        <strong>Customer</strong>
+        Customer purchases products.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Sale</strong>
+        Product, quantity and selling price are recorded.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Customer Invoice</strong>
+        Billing amount is generated or recorded.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Inventory</strong>
+        Sold quantity is deducted from stock.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Payment</strong>
+        Customer payment and outstanding amount are tracked.
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     8. VENDOR INVOICE AUTOMATION
+===================================================== -->
+
+<h2>8. Vendor Invoice Processing Flow</h2>
+
+<p>
+A major part of the system is the vendor invoice processing workflow.
+A vendor invoice can be uploaded instead of manually entering every
+field.
+</p>
+
+<div class="flow">
+
+    <div class="flow-box">
+        <strong>1. Upload Invoice</strong>
+        Vendor invoice PDF or image is uploaded.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>2. Store Invoice</strong>
+        The document is stored in Amazon S3.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>3. Process Invoice</strong>
+        AWS Lambda performs invoice-processing logic.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>4. Extract Information</strong>
+        Vendor, invoice number, items, quantity, rate, tax
+        and totals are extracted.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>5. Calculate</strong>
+        The system calculates line amounts and totals.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>6. Verify</strong>
+        Extracted totals are compared with calculated totals.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>7. Generate Receipt</strong>
+        A standardized receipt is generated.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>8. Store / Deliver</strong>
+        The result can be stored, viewed or downloaded.
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     9. RECEIPT
+===================================================== -->
+
+<h2>9. Receipt Generation</h2>
+
+<p>
+Processed vendor invoices receive sequential receipt identifiers.
+</p>
+
+<div class="summary">
+
+    VRECEIPT-0000001<br>
+    VRECEIPT-0000002<br>
+    VRECEIPT-0000003
+
+</div>
+
+
+<!-- =====================================================
+     10. VERIFICATION
+===================================================== -->
+
+<h2>10. Invoice Calculation & Verification</h2>
+
+<div class="architecture">
+
+Line Amount
+    =
+Quantity × Rate
+
+
+Subtotal
+    =
+Sum of Line Amounts
+
+
+Final Total
+    =
+Subtotal
+- Discount
++ Tax
++ Other Charges
+
+
+             EXTRACTED TOTAL
+                    |
+                    v
+              COMPARE WITH
+                    |
+                    v
+             CALCULATED TOTAL
+                    |
+             +------+------+
+             |             |
+             v             v
+           MATCH       MISMATCH
+             |             |
+             v             v
+         VERIFIED       REVIEW
+
+</div>
+
+
+<!-- =====================================================
+     11. AWS ARCHITECTURE
+===================================================== -->
+
+<h2>11. AWS Architecture</h2>
+
+<div class="architecture">
+
+                         USER
+                           |
+                           v
+                  +------------------+
+                  | Amazon CloudFront|
+                  | HTTPS / CDN      |
+                  +--------+---------+
+                           |
+                           v
+                  +------------------+
+                  | Amazon S3        |
+                  | Frontend Website |
+                  +--------+---------+
+                           |
+                           | API Requests
+                           v
+                  +------------------+
+                  | Backend / API    |
+                  +--------+---------+
+                           |
+              +------------+------------+
+              |                         |
+              v                         v
+       +--------------+          +--------------+
+       | Amazon RDS   |          | AWS Lambda   |
+       | SQL Server   |          | Processing   |
+       +--------------+          +------+-------+
+              |                         |
+              |                         v
+              |                    +---------+
+              |                    | S3      |
+              |                    | Invoice |
+              |                    | Files   |
+              |                    +---------+
+              |
+              v
+       YAMAN MOTORS
+       BUSINESS DATA
+
+
+Supporting AWS Services:
+
+IAM        → Permissions and security
+API Gateway→ API access where applicable
+CloudWatch → Logs and monitoring
+DynamoDB   → Invoice-processing records where applicable
+
+</div>
+
+
+<!-- =====================================================
+     12. AWS SERVICES
+===================================================== -->
+
+<h2>12. AWS Services Used</h2>
+
+<table>
+
+<tr>
+    <th>AWS Service</th>
+    <th>Purpose</th>
+</tr>
+
+<tr>
+    <td>Amazon CloudFront</td>
+    <td>
+        Delivers the YAMAN MOTORS web interface securely
+        through HTTPS and CDN infrastructure.
+    </td>
+</tr>
+
+<tr>
+    <td>Amazon S3</td>
+    <td>
+        Stores frontend website files and vendor invoice documents.
+    </td>
+</tr>
+
+<tr>
+    <td>Amazon RDS - SQL Server</td>
+    <td>
+        Main relational database for business information.
+    </td>
+</tr>
+
+<tr>
+    <td>AWS Lambda</td>
+    <td>
+        Performs serverless invoice-processing and automation tasks.
+    </td>
+</tr>
+
+<tr>
+    <td>API Gateway</td>
+    <td>
+        Provides API endpoints for applicable frontend/backend
+        communication.
+    </td>
+</tr>
+
+<tr>
+    <td>IAM</td>
+    <td>
+        Controls permissions and access between AWS resources.
+    </td>
+</tr>
+
+<tr>
+    <td>CloudWatch</td>
+    <td>
+        Provides logs and monitoring for AWS components.
+    </td>
+</tr>
+
+<tr>
+    <td>DynamoDB</td>
+    <td>
+        Used in the invoice-processing architecture for
+        NoSQL invoice records where applicable.
+    </td>
+</tr>
+
+</table>
+
+
+<!-- =====================================================
+     13. BACKEND
+===================================================== -->
+
+<h2>13. Backend Structure</h2>
+
+<p>
+The backend is modularized according to business functionality.
+</p>
+
+<div class="architecture">
+
+backend/
+│
+├── app.py
+├── database.py
+│
+├── vendors.py
+├── customers.py
+├── products.py
+│
+├── purchases.py
+├── sales.py
+├── invoices.py
+├── payments.py
+├── inventory.py
+└── reports.py
+
+</div>
+
+
+<!-- =====================================================
+     14. DATABASE
+===================================================== -->
+
+<h2>14. Database Flow</h2>
+
+<div class="flow">
+
+    <div class="flow-box">
+        <strong>Frontend</strong>
+        User submits or requests information.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Backend API</strong>
+        Request is validated and processed.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Database Module</strong>
+        Application communicates with SQL Server.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Amazon RDS - SQL Server</strong>
+        Business information is stored persistently.
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="flow-box">
+        <strong>Response</strong>
+        Result is returned to the web interface.
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     15. END TO END EXAMPLE
+===================================================== -->
+
+<h2>15. End-to-End Example</h2>
+
+<div class="summary">
+
+    <strong>Example:</strong>
+
+    A vendor sends YAMAN MOTORS an invoice for purchased products.
+
+</div>
+
+<ol>
+
+    <li>
+        The user uploads the vendor invoice.
+    </li>
+
+    <li>
+        The invoice document is stored in S3.
+    </li>
+
+    <li>
+        Invoice-processing logic extracts the required information.
+    </li>
+
+    <li>
+        Product quantity and rates are used to calculate amounts.
+    </li>
+
+    <li>
+        Tax, discount and final total are validated.
+    </li>
+
+    <li>
+        A sequential vendor receipt number is generated.
+    </li>
+
+    <li>
+        Purchase and invoice information is recorded.
+    </li>
+
+    <li>
+        Inventory is updated with the received quantity.
+    </li>
+
+    <li>
+        Vendor payable is tracked.
+    </li>
+
+    <li>
+        Payment can later be recorded against the payable.
+    </li>
+
+    <li>
+        The transaction becomes available for reporting.
+    </li>
+
+</ol>
+
+
+<!-- =====================================================
+     16. CONNECTED MODULES
+===================================================== -->
+
+<h2>16. How the Modules Connect</h2>
+
+<div class="architecture">
+
+PURCHASE
+   |
+   +----> PURCHASE ITEMS
+   |
+   +----> INVOICE
+   |
+   +----> INVENTORY INCREASE
+   |
+   +----> VENDOR PAYABLE
+                |
+                v
+             PAYMENT
+                |
+                v
+             REPORTS
+
+
+SALE
+   |
+   +----> SALE ITEMS
+   |
+   +----> CUSTOMER INVOICE
+   |
+   +----> INVENTORY DECREASE
+   |
+   +----> CUSTOMER RECEIVABLE
+                |
+                v
+             PAYMENT
+                |
+                v
+             REPORTS
+
+</div>
+
+
+<!-- =====================================================
+     17. CONCLUSION
+===================================================== -->
+
+<h2>17. Conclusion</h2>
+
+<div class="summary">
+
+    <strong>YAMAN MOTORS</strong> is designed as a centralized
+    factory billing and business management system.
+
+    <br><br>
+
+    It connects vendors, customers, products, purchases, sales,
+    invoices, payments, inventory and reporting through one
+    application.
+
+</div>
+
+<p>
+The AWS architecture provides the infrastructure required for
+hosting, storage, processing, database management, security and
+monitoring.
+</p>
+
+<p>
+The key advantage of the system is that business operations are
+connected rather than isolated. A purchase can affect the invoice,
+inventory, payable and reports, while a sale can affect the invoice,
+inventory, receivable and reports.
+</p>
+
+
+<!-- =====================================================
+     18. PRESENTATION STATEMENT
+===================================================== -->
+
+<h2>18. Presentation Statement</h2>
+
+<div class="summary">
+
+    <strong>
+
+        "YAMAN MOTORS is a centralized factory billing and business
+        management system that connects vendors, customers, purchases,
+        sales, invoices, payments, inventory and reporting through a
+        single web interface. AWS services provide the hosting,
+        storage, processing, database infrastructure, security and
+        monitoring required to support the system."
+
+    </strong>
+
+</div>
+
+
+</main>
+
+
+<footer contenteditable="true">
+
+    YAMAN MOTORS<br>
+    Factory Billing & Business Management System
+
+</footer>
+
+</div>
+
+</body>
+</html>

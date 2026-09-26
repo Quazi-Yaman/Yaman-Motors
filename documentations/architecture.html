@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAMAN MOTORS - System Architecture</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f4f7fb;
+        color: #172033;
+    }
+
+    .page {
+        max-width: 1500px;
+        margin: auto;
+        padding: 35px;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 34px;
+        color: #173f5f;
+    }
+
+    .header p {
+        margin: 8px 0 0;
+        color: #667085;
+        font-size: 16px;
+    }
+
+    .legend {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin: 20px 0 30px;
+        flex-wrap: wrap;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #475467;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .local-dot {
+        background: #3caea3;
+    }
+
+    .aws-dot {
+        background: #ff9900;
+    }
+
+    .ai-dot {
+        background: #7c5cff;
+    }
+
+    .section {
+        background: white;
+        border: 1px solid #dce3ec;
+        border-radius: 18px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 25px rgba(23, 63, 95, 0.06);
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+        margin: 0;
+        font-size: 21px;
+        color: #173f5f;
+    }
+
+    .badge {
+        font-size: 11px;
+        padding: 5px 9px;
+        border-radius: 20px;
+        font-weight: 700;
+    }
+
+    .local-badge {
+        background: #e5f7f4;
+        color: #18766e;
+    }
+
+    .aws-badge {
+        background: #fff1dc;
+        color: #a85d00;
+    }
+
+    .flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .node {
+        width: 190px;
+        min-height: 115px;
+        background: #fff;
+        border: 2px solid #d9e2ec;
+        border-radius: 15px;
+        padding: 18px 14px;
+        text-align: center;
+        position: relative;
+    }
+
+    .node.local {
+        border-color: #3caea3;
+        background: #f4fcfb;
+    }
+
+    .node.aws {
+        border-color: #ff9900;
+        background: #fffaf2;
+    }
+
+    .node.ai {
+        border-color: #7c5cff;
+        background: #f8f6ff;
+    }
+
+    .icon {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .node h3 {
+        margin: 0 0 5px;
+        font-size: 16px;
+    }
+
+    .node p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #667085;
+    }
+
+    .arrow {
+        font-size: 28px;
+        color: #98a2b3;
+        font-weight: bold;
+    }
+
+    .arrow-down {
+        text-align: center;
+        font-size: 30px;
+        color: #98a2b3;
+        margin: 10px 0;
+    }
+
+    .modules {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .module {
+        background: #f8fafc;
+        border: 1px solid #dce3ec;
+        border-radius: 10px;
+        padding: 13px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 600;
+        color: #344054;
+    }
+
+    .flask-core {
+        max-width: 500px;
+        margin: auto;
+        border: 2px solid #3caea3;
+        background: #f4fcfb;
+        border-radius: 16px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .flask-core h3 {
+        margin: 0 0 7px;
+        color: #18766e;
+        font-size: 20px;
+    }
+
+    .flask-core p {
+        margin: 0;
+        color: #667085;
+        font-size: 13px;
+    }
+
+    .architecture-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+
+    .workflow {
+        border: 1px solid #dce3ec;
+        border-radius: 15px;
+        padding: 20px;
+        background: #fafcff;
+    }
+
+    .workflow h3 {
+        margin: 0 0 18px;
+        color: #173f5f;
+        font-size: 18px;
+    }
+
+    .workflow-flow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .small-node {
+        min-width: 115px;
+        padding: 14px 10px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid #d0d5dd;
+        background: white;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .small-arrow {
+        color: #98a2b3;
+        font-size: 21px;
+        font-weight: bold;
+    }
+
+    .aws-cloud {
+        border: 2px dashed #ff9900;
+        border-radius: 20px;
+        padding: 25px;
+        background: #fffdf9;
+    }
+
+    .cloud-label {
+        text-align: center;
+        margin-bottom: 22px;
+        font-size: 13px;
+        color: #a85d00;
+        font-weight: 700;
+        letter-spacing: .5px;
+    }
+
+    .aws-services {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    .aws-service {
+        background: white;
+        border: 1px solid #ffd08a;
+        border-radius: 14px;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .aws-service .icon {
+        font-size: 28px;
+    }
+
+    .aws-service h3 {
+        margin: 5px 0;
+        font-size: 15px;
+    }
+
+    .aws-service p {
+        margin: 0;
+        font-size: 11px;
+        color: #667085;
+        line-height: 1.5;
+    }
+
+    .ai-flow {
+        max-width: 850px;
+        margin: auto;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 10px;
+        color: #667085;
+        font-size: 12px;
+    }
+
+    .note {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 12px;
+        background: #f8fafc;
+        border-left: 4px solid #3caea3;
+        font-size: 13px;
+        color: #475467;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 1000px) {
+        .modules {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .aws-services {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .architecture-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .page {
+            padding: 15px;
+        }
+
+        .flow {
+            flex-direction: column;
+        }
+
+        .arrow {
+            transform: rotate(90deg);
+        }
+
+        .modules {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .aws-services {
+            grid-template-columns: 1fr;
+        }
+
+        .node {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+
+    @media print {
+        body {
+            background: white;
+        }
+
+        .page {
+            max-width: none;
+        }
+
+        .section {
+            box-shadow: none;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>YAMAN MOTORS</h1>
+        <p>Factory ERP — Complete System Architecture</p>
+    </header>
+
+    <div class="legend">
+        <div class="legend-item">
+            <span class="dot local-dot"></span>
+            Local Application
+        </div>
+
+        <div class="legend-item">
+            <span class="dot aws-dot"></span>
+            AWS Cloud
+        </div>
+
+        <div class="legend-item">
+            <span class="dot ai-dot"></span>
+            AI Service
+        </div>
+    </div>
+
+
+    <!-- MAIN APPLICATION FLOW -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>1. Main Application Flow</h2>
+            <span class="badge local-badge">LOCAL</span>
+        </div>
+
+        <div class="flow">
+
+            <div class="node local">
+                <div class="icon">🖥️</div>
+                <h3>User / Browser</h3>
+                <p>Employee accesses the YAMAN MOTORS ERP.</p>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="node local">
+                <div class="icon">🌐</div>
+                <h3>Frontend</h3>
+                <p>HTML + CSS + JavaScript<br>localhost:5500</p>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="node local">
+                <div class="icon">🐍</div>
+                <h3>Flask Backend</h3>
+                <p>Python REST APIs<br>localhost:5000</p>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="node aws">
+                <div class="icon">🗄️</div>
+                <h3>AWS RDS</h3>
+                <p>SQL Server<br>YamanMotorsDB</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FLASK MODULES -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>2. Flask Backend — ERP Modules</h2>
+            <span class="badge local-badge">BUSINESS LOGIC</span>
+        </div>
+
+        <div class="flask-core">
+            <h3>🐍 Python Flask Backend</h3>
+            <p>REST APIs • Business Logic • Database Operations • PDF Generation • S3 Upload</p>
+        </div>
+
+        <div class="modules">
+
+            <div class="module">👥 Vendors</div>
+            <div class="module">👤 Customers</div>
+            <div class="module">📦 Products</div>
+            <div class="module">🛒 Purchases</div>
+            <div class="module">💰 Sales</div>
+
+            <div class="module">🧾 Invoices</div>
+            <div class="module">💳 Payments</div>
+            <div class="module">📊 Inventory</div>
+            <div class="module">📈 Reports</div>
+            <div class="module">🤖 AI Assistant</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATABASE -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>3. Database Layer</h2>
+            <span class="badge aws-badge">AWS</span>
+        </div>
+
+        <div class="flow">
+
+            <div class="node local">
+                <div class="icon">🐍</div>
+                <h3>Flask</h3>
+                <p>CRUD APIs and business operations</p>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="node aws">
+                <div class="icon">🗄️</div>
+                <h3>Amazon RDS</h3>
+                <p>SQL Server database</p>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="node aws">
+                <div class="icon">📋</div>
+                <h3>YamanMotorsDB</h3>
+                <p>Customers • Vendors • Products • Orders • Invoices • Payments • Inventory</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>4. AI Assistant Flow</h2>
+            <span class="badge ai-dot" style="background:#eeeaff;color:#6246d3;">
+                AI
+            </span>
+        </div>
+
+        <div class="ai-flow">
+
+            <div class="workflow">
+
+                <h3>🤖 Business Intelligence Assistant</h3>
+
+                <div class="workflow-flow">
+
+                    <div class="small-node">
+                        User Question
+                    </div>
+
+                    <div class="small-arrow">→</div>
+
+                    <div class="small-node">
+                        Flask AI API
+                    </div>
+
+                    <div class="small-arrow">→</div>
+
+                    <div class="small-node">
+                        Business Tools
+                    </div>
+
+                    <div class="small-arrow">→</div>
+
+                    <div class="small-node">
+                        RDS Data
+                    </div>
+
+                    <div class="small-arrow">→</div>
+
+                    <div class="small-node">
+                        Gemini
+                    </div>
+
+                    <div class="small-arrow">→</div>
+
+                    <div class="small-node">
+                        AI Answer
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AWS CLOUD -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>5. AWS Services</h2>
+            <span class="badge aws-badge">AWS CLOUD</span>
+        </div>
+
+        <div class="aws-cloud">
+
+            <div class="cloud-label">
+                AMAZON WEB SERVICES — ap-south-1 (Mumbai)
+            </div>
+
+            <div class="aws-services">
+
+                <div class="aws-service">
+                    <div class="icon">🗄️</div>
+                    <h3>Amazon RDS</h3>
+                    <p>SQL Server database for ERP business data.</p>
+                </div>
+
+                <div class="aws-service">
+                    <div class="icon">🪣</div>
+                    <h3>Amazon S3</h3>
+                    <p>Stores generated receipt PDFs under receipts/.</p>
+                </div>
+
+                <div class="aws-service">
+                    <div class="icon">λ</div>
+                    <h3>AWS Lambda</h3>
+                    <p>Processes new receipt PDFs and sends emails.</p>
+                </div>
+
+                <div class="aws-service">
+                    <div class="icon">✉️</div>
+                    <h3>Amazon SES</h3>
+                    <p>Sends payment receipt emails with PDF attachments.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RECEIPT WORKFLOW -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>6. Customer Receipt — Complete AWS Workflow</h2>
+            <span class="badge aws-badge">SERVERLESS FLOW</span>
+        </div>
+
+        <div class="workflow">
+
+            <div class="workflow-flow">
+
+                <div class="small-node">
+                    💳<br>
+                    Customer Payment
+                </div>
+
+                <div class="small-arrow">→</div>
+
+                <div class="small-node">
+                    🐍<br>
+                    Flask
+                </div>
+
+                <div class="small-arrow">→</div>
+
+                <div class="small-node">
+                    📄<br>
+                    Generate PDF
+                </div>
+
+                <div class="small-arrow">→</div>
+
+                <div class="small-node">
+                    🪣<br>
+                    S3
+                </div>
+
+                <div class="small-arrow">→</div>
+
+                <div class="small-node">
+                    ⚡<br>
+                    S3 Trigger
+                </div>
+
+                <div class="small-arrow">→</div>
+
+                <div class="small-node">
+                    λ<br>
+                    Lambda
+                </div>
+
+                <div class="small-arrow">→</div>
+
+                <div class="small-node">
+                    ✉️<br>
+                    SES
+                </div>
+
+                <div class="small-arrow">→</div>
+
+                <div class="small-node">
+                    📧<br>
+                    Customer Email
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="note">
+            <strong>How it works:</strong>
+            Flask creates the receipt PDF and uploads it to S3.
+            The S3 object creation automatically triggers Lambda.
+            Lambda retrieves the PDF and sends it through Amazon SES.
+            The recipient receives the payment receipt as a PDF attachment.
+        </div>
+
+    </section>
+
+
+    <!-- BUSINESS FLOW -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>7. Core ERP Business Flow</h2>
+        </div>
+
+        <div class="architecture-grid">
+
+            <div class="workflow">
+
+                <h3>🛒 Purchase Flow</h3>
+
+                <div class="workflow-flow">
+
+                    <div class="small-node">Vendor</div>
+                    <div class="small-arrow">→</div>
+                    <div class="small-node">Purchase Order</div>
+                    <div class="small-arrow">→</div>
+                    <div class="small-node">Vendor Invoice</div>
+                    <div class="small-arrow">→</div>
+                    <div class="small-node">Inventory ↑</div>
+                    <div class="small-arrow">→</div>
+                    <div class="small-node">Vendor Payment</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow">
+
+                <h3>💰 Sales Flow</h3>
+
+                <div class="workflow-flow">
+
+                    <div class="small-node">Customer</div>
+                    <div class="small-arrow">→</div>
+                    <div class="small-node">Sales Order</div>
+                    <div class="small-arrow">→</div>
+                    <div class="small-node">Customer Invoice</div>
+                    <div class="small-arrow">→</div>
+                    <div class="small-node">Inventory ↓</div>
+                    <div class="small-arrow">→</div>
+                    <div class="small-node">Customer Payment</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESPONSIBILITY -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>8. What Each Component Does</h2>
+        </div>
+
+        <div class="modules">
+
+            <div class="module">
+                🖥️<br>
+                Browser<br>
+                <small>User interface</small>
+            </div>
+
+            <div class="module">
+                🌐<br>
+                Frontend<br>
+                <small>HTML/CSS/JS</small>
+            </div>
+
+            <div class="module">
+                🐍<br>
+                Flask<br>
+                <small>Business logic</small>
+            </div>
+
+            <div class="module">
+                🗄️<br>
+                RDS<br>
+                <small>Database</small>
+            </div>
+
+            <div class="module">
+                🪣<br>
+                S3<br>
+                <small>PDF storage</small>
+            </div>
+
+            <div class="module">
+                λ<br>
+                Lambda<br>
+                <small>Email processing</small>
+            </div>
+
+            <div class="module">
+                ✉️<br>
+                SES<br>
+                <small>Email delivery</small>
+            </div>
+
+            <div class="module">
+                🤖<br>
+                Gemini<br>
+                <small>AI responses</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="footer">
+        YAMAN MOTORS — Factory ERP Architecture • HTML / CSS / JavaScript • Python Flask • AWS
+    </div>
+
+</div>
+
+</body>
+</html>

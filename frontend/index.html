@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Yaman Motors Business Management System">
+
+    <title>Yaman Motors</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         APPLICATION
+         ===================================================== -->
+
+    <div class="app-shell">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <aside
+            class="sidebar"
+            id="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="brand-mark">
+                    YM
+                </div>
+
+                <div class="brand-text">
+                    <strong>YAMAN</strong>
+                    <span>MOTORS</span>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-navigation">
+
+                <!-- MAIN -->
+
+                <div class="navigation-group">
+
+                    <div class="navigation-label">
+                        MAIN
+                    </div>
+
+                    <button
+                        type="button"
+                        class="nav-item active"
+                        data-section="dashboard">
+
+                        <span class="nav-icon">⌂</span>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- MASTER DATA -->
+
+                <div class="navigation-group">
+
+                    <div class="navigation-label">
+                        MASTER DATA
+                    </div>
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="vendors">
+
+                        <span class="nav-icon">♙</span>
+
+                        <span>
+                            Vendors
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="customers">
+
+                        <span class="nav-icon">♙</span>
+
+                        <span>
+                            Customers
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="products">
+
+                        <span class="nav-icon">▦</span>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- OPERATIONS -->
+
+                <div class="navigation-group">
+
+                    <div class="navigation-label">
+                        OPERATIONS
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="purchases">
+
+                        <span class="nav-icon">↓</span>
+
+                        <span>
+                            Purchases
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="sales">
+
+                        <span class="nav-icon">↑</span>
+
+                        <span>
+                            Sales
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="invoices">
+
+                        <span class="nav-icon">▤</span>
+
+                        <span>
+                            Invoices
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="payments">
+
+                        <span class="nav-icon">₹</span>
+
+                        <span>
+                            Payments
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="inventory">
+
+                        <span class="nav-icon">▥</span>
+
+                        <span>
+                            Inventory
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- ANALYTICS -->
+
+                <div class="navigation-group">
+
+                    <div class="navigation-label">
+                        ANALYTICS
+                    </div>
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="reports">
+
+                        <span class="nav-icon">◫</span>
+
+                        <span>
+                            Reports
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- ASSISTANT -->
+
+                <div class="navigation-group">
+
+                    <div class="navigation-label">
+                        ASSISTANT
+                    </div>
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-section="ai-assistant">
+
+                        <span class="nav-icon">✦</span>
+
+                        <span>
+                            AI Assistant
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-footer">
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    <strong>
+                        System Online
+                    </strong>
+
+                </div>
+
+                <span class="version">
+                    Yaman Motors ERP v1.0
+                </span>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MAIN APPLICATION
+             ================================================= -->
+
+        <div class="main-wrapper">
+
+
+            <!-- =================================================
+                 TOP HEADER
+                 ================================================= -->
+
+            <header class="top-header">
+
+                <div class="header-left">
+
+                    <button
+                        type="button"
+                        class="header-button"
+                        id="sidebarToggle"
+                        aria-label="Toggle sidebar">
+
+                        ☰
+
+                    </button>
+
+
+                    <div class="page-heading">
+
+                        <span>
+                            YAMAN MOTORS
+                        </span>
+
+                        <h1 id="pageTitle">
+                            Dashboard
+                        </h1>
+
+                    </div>
+
+                </div>
+
+
+                <div class="header-right">
+
+
+                    <!-- GLOBAL SEARCH -->
+
+                    <div class="global-search">
+
+                        <span class="search-icon">
+                            ⌕
+                        </span>
+
+                        <input
+                            type="search"
+                            id="globalSearch"
+                            placeholder="Search vendors, customers, products..."
+                            autocomplete="off">
+
+                        <span class="search-shortcut">
+                            Enter
+                        </span>
+
+                    </div>
+
+
+                    <!-- NOTIFICATIONS -->
+
+                    <button
+                        type="button"
+                        class="header-button notification-button"
+                        id="notificationButton"
+                        aria-label="Notifications">
+
+                        ♢
+
+                        <span class="notification-dot"></span>
+
+                    </button>
+
+
+                    <!-- USER -->
+
+                    <button
+                        type="button"
+                        class="user-menu"
+                        id="userMenu">
+
+                        <span class="user-avatar">
+                            Y
+                        </span>
+
+                        <span class="user-info">
+
+                            <strong>
+                                Yaman
+                            </strong>
+
+                            <small>
+                                Administrator
+                            </small>
+
+                        </span>
+
+                        <span class="user-arrow">
+                            ▾
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =================================================
+                 MAIN CONTENT
+                 ================================================= -->
+
+            <main class="main-content">
+
+
+                <!-- =================================================
+                     DASHBOARD
+                     ================================================= -->
+
+                <section
+                    class="page-section active"
+                    id="section-dashboard">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                BUSINESS OVERVIEW
+                            </p>
+
+                            <h2>
+                                Good morning, Yaman
+                            </h2>
+
+                            <p class="section-description">
+                                Here's what's happening across
+                                Yaman Motors.
+                            </p>
+
+                        </div>
+
+
+                        <div class="section-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="refreshDashboardButton">
+
+                                ↻
+                                Refresh
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KPI CARDS -->
+
+                    <div class="kpi-grid">
+
+
+                        <article class="kpi-card">
+
+                            <div class="kpi-icon sales">
+                                ₹
+                            </div>
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Total Sales
+                                </span>
+
+                                <strong id="dashboardTotalSales">
+                                    ₹0.00
+                                </strong>
+
+                                <small>
+                                    Current business sales
+                                </small>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card">
+
+                            <div class="kpi-icon purchases">
+                                ↓
+                            </div>
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Total Purchases
+                                </span>
+
+                                <strong id="dashboardTotalPurchases">
+                                    ₹0.00
+                                </strong>
+
+                                <small>
+                                    Vendor purchases
+                                </small>
+
+                            </div>
+
+                        </article>
+
+
+                        
+
+                        <article class="kpi-card">
+
+                            <div class="kpi-icon receivable">
+                                ←
+                            </div>
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Customer Outstanding
+                                </span>
+
+                                <strong id="dashboardCustomerOutstanding">
+                                    ₹0.00
+                                </strong>
+
+                                <small>
+                                    Amount receivable
+                                </small>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card">
+
+                            <div class="kpi-icon payable">
+                                →
+                            </div>
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Vendor Outstanding
+                                </span>
+
+                                <strong id="dashboardVendorOutstanding">
+                                    ₹0.00
+                                </strong>
+
+                                <small>
+                                    Amount payable
+                                </small>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!-- DASHBOARD GRID -->
+
+                    <div class="dashboard-grid">
+
+
+                        <!-- REVENUE -->
+
+                        <article class="panel revenue-panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <h3>
+                                        Sales Overview
+                                    </h3>
+
+                                    <span>
+                                        Business revenue
+                                    </span>
+
+                                </div>
+
+
+                                <select id="revenuePeriod">
+
+                                    <option value="month">
+                                        This Month
+                                    </option>
+
+                                    <option value="quarter">
+                                        This Quarter
+                                    </option>
+
+                                    <option value="year">
+                                        This Year
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                           
+<div class="sales-chart-container">
+
+    <div class="sales-chart-summary">
+
+        <span>Total Invoiced Sales</span>
+
+        <strong id="dashboardChartTotal">
+            ₹0.00
+        </strong>
+
+        <small>
+            Customer invoices
+        </small>
+
+    </div>
+
+    <div class="sales-chart-bars" id="dashboardSalesChart">
+
+        <div class="sales-chart-empty">
+            Loading sales data...
+        </div>
+
+    </div>
+
+</div>
+
+
+
+                        </article>
+
+
+                        <!-- QUICK ACTIONS -->
+
+                        <article class="panel quick-actions-panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <h3>
+                                        Quick Actions
+                                    </h3>
+
+                                    <span>
+                                        Common operations
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="quick-action-grid">
+
+                                <button
+                                    type="button"
+                                    class="quick-action"
+                                    data-action="new-purchase">
+
+                                    <span>
+                                        ↓
+                                    </span>
+
+                                    <strong>
+                                        New Purchase
+                                    </strong>
+
+                                    <small>
+                                        Create PO
+                                    </small>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="quick-action"
+                                    data-action="new-sale">
+
+                                    <span>
+                                        ↑
+                                    </span>
+
+                                    <strong>
+                                        New Sale
+                                    </strong>
+
+                                    <small>
+                                        Create SO
+                                    </small>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="quick-action"
+                                    data-action="upload-invoice">
+
+                                    <span>
+                                        ▤
+                                    </span>
+
+                                    <strong>
+                                        Upload Invoice
+                                    </strong>
+
+                                    <small>
+                                        Vendor invoice
+                                    </small>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="quick-action"
+                                    data-action="record-payment">
+
+                                    <span>
+                                        ₹
+                                    </span>
+
+                                    <strong>
+                                        Record Payment
+                                    </strong>
+
+                                    <small>
+                                        Payment / receipt
+                                    </small>
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!-- RECENT ACTIVITY -->
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Recent Activity
+                                </h3>
+
+                                <span>
+                                    Latest business transactions
+                                </span>
+
+                            </div>
+
+                           
+<button
+    type="button"
+    class="text-button"
+    onclick="showSection('sales')"
+>
+    View All →
+</button>
+
+
+                        </div>
+
+
+                        <div class="activity-empty">
+
+                            <span>
+                                ◷
+                            </span>
+
+                            <strong>
+                                No recent activity
+                            </strong>
+
+                            <p>
+                                Transactions will appear here
+                                as your business data grows.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     VENDORS
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-vendors">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                MASTER DATA
+                            </p>
+
+                            <h2>
+                                Vendors
+                            </h2>
+
+                            <p class="section-description">
+                                Manage suppliers and vendor relationships.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="addVendorButton">
+
+                            + Add Vendor
+
+                        </button>
+
+                    </div>
+
+
+                    <article class="panel">
+
+
+                        <div class="table-toolbar">
+
+                            <div class="local-search">
+
+                                <span>
+                                    ⌕
+                                </span>
+
+                                <input
+                                    id="vendorSearch"
+                                    type="search"
+                                    placeholder="Search vendors...">
+
+                            </div>
+
+
+                            <select id="vendorStatusFilter">
+
+                                <option value="ALL">
+                                    All Status
+                                </option>
+
+                                <option value="ACTIVE">
+                                    Active
+                                </option>
+
+                                <option value="INACTIVE">
+                                    Inactive
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Vendor ID
+                                        </th>
+
+                                        <th>
+                                            Vendor
+                                        </th>
+
+                                        <th>
+                                            Phone
+                                        </th>
+
+                                        <th>
+                                            Email
+                                        </th>
+
+                                        <th>
+                                            GSTIN
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Actions
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="vendorsTableBody">
+
+                                    <tr class="empty-row">
+
+                                        <td colspan="7">
+
+                                            <div class="table-empty-state">
+
+                                                <strong>
+                                                    Loading vendors...
+                                                </strong>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     CUSTOMERS
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-customers">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                MASTER DATA
+                            </p>
+
+                            <h2>
+                                Customers
+                            </h2>
+
+                            <p class="section-description">
+                                Manage customers and buyers.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="addCustomerButton">
+
+                            + Add Customer
+
+                        </button>
+
+                    </div>
+
+
+                    <article class="panel">
+
+
+                        <div class="table-toolbar">
+
+                            <div class="local-search">
+
+                                <span>
+                                    ⌕
+                                </span>
+
+                                <input
+                                    id="customerSearch"
+                                    type="search"
+                                    placeholder="Search customers...">
+
+                            </div>
+
+
+                            <select id="customerStatusFilter">
+
+                                <option value="ALL">
+                                    All Status
+                                </option>
+
+                                <option value="ACTIVE">
+                                    Active
+                                </option>
+
+                                <option value="INACTIVE">
+                                    Inactive
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Customer ID
+                                        </th>
+
+                                        <th>
+                                            Customer
+                                        </th>
+
+                                        <th>
+                                            Phone
+                                        </th>
+
+                                        <th>
+                                            Email
+                                        </th>
+
+                                        <th>
+                                            GSTIN
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Actions
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="customersTableBody">
+
+                                    <tr class="empty-row">
+
+                                        <td colspan="7">
+
+                                            <div class="table-empty-state">
+
+                                                <strong>
+                                                    Loading customers...
+                                                </strong>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     PRODUCTS
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-products">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                MASTER DATA
+                            </p>
+
+                            <h2>
+                                Products
+                            </h2>
+
+                            <p class="section-description">
+                                Manage products, prices and tax settings.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="addProductButton">
+
+                            + Add Product
+
+                        </button>
+
+                    </div>
+
+
+                    <article class="panel">
+
+
+                        <div class="table-toolbar">
+
+                            <div class="local-search">
+
+                                <span>
+                                    ⌕
+                                </span>
+
+                                <input
+                                    id="productSearch"
+                                    type="search"
+                                    placeholder="Search products...">
+
+                            </div>
+
+
+                            <select id="productCategoryFilter">
+
+                                <option value="ALL">
+                                    All Categories
+                                </option>
+
+                                <option value="ENGINE">
+                                    Engine
+                                </option>
+
+                                <option value="TYRE">
+                                    Tyre
+                                </option>
+
+                                <option value="BATTERY">
+                                    Battery
+                                </option>
+
+                                <option value="CAR">
+                                    Car
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Product ID
+                                        </th>
+
+                                        <th>
+                                            Product
+                                        </th>
+
+                                        <th>
+                                            Category
+                                        </th>
+
+                                        <th>
+                                            Unit
+                                        </th>
+
+                                        <th>
+                                            Selling Price
+                                        </th>
+
+                                        <th>
+                                            Tax
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Actions
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="productsTableBody">
+
+                                    <tr class="empty-row">
+
+                                        <td colspan="8">
+
+                                            <div class="table-empty-state">
+
+                                                <strong>
+                                                    Loading products...
+                                                </strong>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     PURCHASES
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-purchases">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                OPERATIONS
+                            </p>
+
+                            <h2>
+                                Purchases
+                            </h2>
+
+                            <p class="section-description">
+                                Manage purchase orders and vendor purchasing.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="newPurchaseButton">
+
+                            + New Purchase Order
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="page-tabs">
+
+                        <button
+                            type="button"
+                            class="tab-button active"
+                            data-purchase-tab="orders">
+
+                            Purchase Orders
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="tab-button"
+                            data-purchase-tab="invoices">
+
+                            Vendor Invoices
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="tab-button"
+                            data-purchase-tab="payments">
+
+                            Payments
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- PURCHASE ORDERS -->
+
+                    <div
+                        class="tab-content active"
+                        id="purchase-tab-orders">
+
+
+                        <article class="panel">
+
+                            <div class="table-toolbar">
+
+                                <div class="local-search">
+
+                                    <span>
+                                        ⌕
+                                    </span>
+
+                                    <input
+                                        id="purchaseSearch"
+                                        type="search"
+                                        placeholder="Search purchase orders...">
+
+                                </div>
+
+
+                                <select id="purchaseStatusFilter">
+
+                                    <option value="ALL">
+                                        All Status
+                                    </option>
+
+                                    <option value="OPEN">
+                                        Open
+                                    </option>
+
+                                    <option value="COMPLETED">
+                                        Completed
+                                    </option>
+
+                                    <option value="CANCELLED">
+                                        Cancelled
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="table-container">
+
+                                <table>
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th>
+                                                PO Number
+                                            </th>
+
+                                            <th>
+                                                Vendor
+                                            </th>
+
+                                            <th>
+                                                Date
+                                            </th>
+
+                                            <th>
+                                                Expected
+                                            </th>
+
+                                            <th>
+                                                Total
+                                            </th>
+
+                                            <th>
+                                                Status
+                                            </th>
+
+                                            <th>
+                                                Actions
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+
+                                    <tbody id="purchaseTableBody">
+
+                                        <tr class="empty-row">
+
+                                            <td colspan="7">
+
+                                                <div class="table-empty-state">
+
+                                                    <strong>
+                                                        No purchase orders
+                                                    </strong>
+
+                                                    <span>
+                                                        Create a purchase order to begin.
+                                                    </span>
+
+                                                </div>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- VENDOR INVOICES -->
+
+                    <div
+                        class="tab-content"
+                        id="purchase-tab-invoices">
+
+
+                        <article class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <h3>
+                                        Vendor Invoices
+                                    </h3>
+
+                                    <span>
+                                        Bills received from suppliers
+                                    </span>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="uploadVendorInvoiceButton">
+
+                                    + Upload Invoice
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="table-empty-state large">
+
+                                <span>
+                                    ▤
+                                </span>
+
+                                <strong>
+                                    No vendor invoices
+                                </strong>
+
+                                <p>
+                                    Upload a vendor PDF and associate
+                                    it with a purchase order.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- PURCHASE PAYMENTS -->
+
+                    <div
+                        class="tab-content"
+                        id="purchase-tab-payments">
+
+
+                        <article class="panel">
+
+                            <div class="table-empty-state large">
+
+                                <span>
+                                    ₹
+                                </span>
+
+                                <strong>
+                                    No vendor payments
+                                </strong>
+
+                                <p>
+                                    Payments made to vendors will
+                                    appear here.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     SALES
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-sales">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                OPERATIONS
+                            </p>
+
+                            <h2>
+                                Sales
+                            </h2>
+
+                            <p class="section-description">
+                                Manage customer orders and sales.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="newSaleButton">
+
+                            + New Sales Order
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="page-tabs">
+
+                        <button
+                            type="button"
+                            class="tab-button active"
+                            data-sales-tab="orders">
+
+                            Sales Orders
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="tab-button"
+                            data-sales-tab="invoices">
+
+                            Customer Invoices
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="tab-button"
+                            data-sales-tab="payments">
+
+                            Payments
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- SALES ORDERS -->
+
+                    <div
+                        class="tab-content active"
+                        id="sales-tab-orders">
+
+
+                        <article class="panel">
+
+                            <div class="table-toolbar">
+
+                                <div class="local-search">
+
+                                    <span>
+                                        ⌕
+                                    </span>
+
+                                    <input
+                                        id="salesSearch"
+                                        type="search"
+                                        placeholder="Search sales orders...">
+
+                                </div>
+
+
+                                <select id="salesStatusFilter">
+
+                                    <option value="ALL">
+                                        All Status
+                                    </option>
+
+                                    <option value="OPEN">
+                                        Open
+                                    </option>
+
+                                    <option value="COMPLETED">
+                                        Completed
+                                    </option>
+
+                                    <option value="CANCELLED">
+                                        Cancelled
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="table-container">
+
+                                <table>
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th>
+                                                SO Number
+                                            </th>
+
+                                            <th>
+                                                Customer
+                                            </th>
+
+                                            <th>
+                                                Date
+                                            </th>
+
+                                            <th>
+                                                Expected
+                                            </th>
+
+                                            <th>
+                                                Total
+                                            </th>
+
+                                            <th>
+                                                Status
+                                            </th>
+
+                                            <th>
+                                                Actions
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+
+                                    <tbody>
+
+                                        <tr class="empty-row">
+
+                                            <td colspan="7">
+
+                                                <div class="table-empty-state">
+
+                                                    <strong>
+                                                        No sales orders
+                                                    </strong>
+
+                                                    <span>
+                                                        Create a sales order to begin.
+                                                    </span>
+
+                                                </div>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- CUSTOMER INVOICES -->
+
+                    <div
+                        class="tab-content"
+                        id="sales-tab-invoices">
+
+
+                        <article class="panel">
+
+                            <div class="table-empty-state large">
+
+                                <span>
+                                    ▤
+                                </span>
+
+                                <strong>
+                                    No customer invoices
+                                </strong>
+
+                                <p>
+                                    Customer invoices generated from
+                                    sales orders will appear here.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- CUSTOMER PAYMENTS -->
+
+                    <div
+                        class="tab-content"
+                        id="sales-tab-payments">
+
+
+                        <article class="panel">
+
+                            <div class="table-empty-state large">
+
+                                <span>
+                                    ₹
+                                </span>
+
+                                <strong>
+                                    No customer payments
+                                </strong>
+
+                                <p>
+                                    Payments received from customers
+                                    will appear here.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     INVOICES
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-invoices">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                DOCUMENTS
+                            </p>
+
+                            <h2>
+                                Invoices
+                            </h2>
+
+                            <p class="section-description">
+                                Manage vendor and customer invoices.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="invoiceUploadButton">
+
+                            + Upload Vendor Invoice
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="page-tabs">
+
+                        <button
+                            type="button"
+                            class="tab-button active"
+                            data-invoice-tab="vendor">
+
+                            Vendor Invoices
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="tab-button"
+                            data-invoice-tab="customer">
+
+                            Customer Invoices
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="tab-content active"
+                        id="invoice-tab-vendor">
+
+
+                        <article class="panel">
+
+                            <div class="table-empty-state large">
+
+                                <span>
+                                    ▤
+                                </span>
+
+                                <strong>
+                                    Vendor invoice management
+                                </strong>
+
+                                <p>
+                                    Vendor-uploaded PDFs, invoice items,
+                                    payment status and original documents
+                                    will appear here.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="invoiceUploadButtonSecondary">
+
+                                    Upload Vendor Invoice
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div
+                        class="tab-content"
+                        id="invoice-tab-customer">
+
+
+                        <article class="panel">
+
+                            <div class="table-empty-state large">
+
+                                <span>
+                                    ▤
+                                </span>
+
+                                <strong>
+                                    Customer invoices
+                                </strong>
+
+                                <p>
+                                    Invoices generated from completed
+                                    sales orders will appear here.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     PAYMENTS
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-payments">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                FINANCE
+                            </p>
+
+                            <h2>
+                                Payments
+                            </h2>
+
+                            <p class="section-description">
+                                Record vendor payments and customer receipts.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="recordPaymentButton">
+
+                            + Record Payment
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="page-tabs">
+
+                        <button
+                            type="button"
+                            class="tab-button active"
+                            data-payment-tab="vendor">
+
+                            Vendor Payments
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="tab-button"
+                            data-payment-tab="customer">
+
+                            Customer Receipts
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="tab-content active"
+                        id="payment-tab-vendor">
+
+
+                        <article class="panel">
+
+                            <div class="table-empty-state large">
+
+                                <span>
+                                    ₹
+                                </span>
+
+                                <strong>
+                                    Vendor payments
+                                </strong>
+
+                                <p>
+                                    Payments made against vendor
+                                    invoices will appear here.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div
+                        class="tab-content"
+                        id="payment-tab-customer">
+
+
+                        <article class="panel">
+
+                            <div class="table-empty-state large">
+
+                                <span>
+                                    ₹
+                                </span>
+
+                                <strong>
+                                    Customer receipts
+                                </strong>
+
+                                <p>
+                                    Payments received from customers
+                                    will appear here.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     INVENTORY
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-inventory">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                OPERATIONS
+                            </p>
+
+                            <h2>
+                                Inventory
+                            </h2>
+
+                            <p class="section-description">
+                                Track current stock and inventory movements.
+                            </p>
+
+                        </div>
+
+
+                        <div class="section-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="refreshInventoryButton">
+
+                                ↻ Refresh
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                id="inventoryTransactionButton">
+
+                                + Stock Adjustment
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <article class="panel">
+
+
+                        <div class="table-toolbar">
+
+                            <div class="local-search">
+
+                                <span>
+                                    ⌕
+                                </span>
+
+                                <input
+                                    id="inventorySearch"
+                                    type="search"
+                                    placeholder="Search inventory...">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Product ID
+                                        </th>
+
+                                        <th>
+                                            Product
+                                        </th>
+
+                                        <th>
+                                            Category
+                                        </th>
+
+                                        <th>
+                                            Unit
+                                        </th>
+
+                                        <th>
+                                            Stock
+                                        </th>
+
+                                        <th>
+                                            Stock Value
+                                        </th>
+
+                                        <th>
+                                            Actions
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="inventoryTableBody">
+
+                                    <tr class="empty-row">
+
+                                        <td colspan="7">
+
+                                            <div class="table-empty-state">
+
+                                                <span>
+                                                    ▥
+                                                </span>
+
+                                                <strong>
+                                                    No inventory data
+                                                </strong>
+
+                                                <span>
+                                                    Inventory transactions will
+                                                    populate this table.
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     REPORTS
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-reports">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                ANALYTICS
+                            </p>
+
+                            <h2>
+                                Reports & Analytics
+                            </h2>
+
+                            <p class="section-description">
+                                Understand sales, purchasing, profitability
+                                and inventory.
+                            </p>
+
+                        </div>
+
+
+                        <div class="section-actions">
+
+                            <select id="reportPeriod">
+
+                                <option value="month">
+                                    This Month
+                                </option>
+
+                                <option value="quarter">
+                                    This Quarter
+                                </option>
+
+                                <option value="year">
+                                    This Year
+                                </option>
+
+                            </select>
+
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="refreshReportsButton">
+
+                                ↻ Refresh
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REPORT KPI -->
+
+                    <div class="kpi-grid report-kpis">
+
+
+                        <article class="kpi-card compact">
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Revenue
+                                </span>
+
+                                <strong id="reportRevenue">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card compact">
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Purchases
+                                </span>
+
+                                <strong id="reportPurchases">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card compact">
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Gross Profit
+                                </span>
+
+                                <strong id="reportGrossProfit">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card compact">
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Receivables
+                                </span>
+
+                                <strong id="reportReceivables">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card compact">
+
+                            <div class="kpi-content">
+
+                                <span>
+                                    Payables
+                                </span>
+
+                                <strong id="reportPayables">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- REPORT CARDS -->
+
+                    <div class="report-grid">
+
+
+                        <button
+                            type="button"
+                            class="report-card"
+                            data-report="monthly-sales">
+
+                            <span>
+                                ◫
+                            </span>
+
+                            <strong>
+                                Monthly Sales
+                            </strong>
+
+                            <small>
+                                Revenue by month
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="report-card"
+                            data-report="top-products">
+
+                            <span>
+                                ▥
+                            </span>
+
+                            <strong>
+                                Top Products
+                            </strong>
+
+                            <small>
+                                Best-selling products
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="report-card"
+                            data-report="customer-sales">
+
+                            <span>
+                                ♙
+                            </span>
+
+                            <strong>
+                                Customer Sales
+                            </strong>
+
+                            <small>
+                                Sales by customer
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="report-card"
+                            data-report="vendor-comparison">
+
+                            <span>
+                                ⇄
+                            </span>
+
+                            <strong>
+                                Vendor Comparison
+                            </strong>
+
+                            <small>
+                                Compare supplier prices
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="report-card"
+                            data-report="product-cost">
+
+                            <span>
+                                ₹
+                            </span>
+
+                            <strong>
+                                Product Cost
+                            </strong>
+
+                            <small>
+                                Purchase cost analysis
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="report-card"
+                            data-report="vendor-history">
+
+                            <span>
+                                ◷
+                            </span>
+
+                            <strong>
+                                Vendor History
+                            </strong>
+
+                            <small>
+                                Vendor transaction history
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="report-card"
+                            data-report="stock-movement">
+
+                            <span>
+                                ↕
+                            </span>
+
+                            <strong>
+                                Stock Movement
+                            </strong>
+
+                            <small>
+                                Inventory movements
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="report-card"
+                            data-report="inventory-value">
+
+                            <span>
+                                ▦
+                            </span>
+
+                            <strong>
+                                Inventory Value
+                            </strong>
+
+                            <small>
+                                Current inventory value
+                            </small>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     AI ASSISTANT
+                     ================================================= -->
+
+                <section
+                    class="page-section"
+                    id="section-ai-assistant">
+
+
+                    <div class="section-top">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                INTELLIGENCE
+                            </p>
+
+                            <h2>
+                                AI Assistant
+                            </h2>
+
+                            <p class="section-description">
+                                Ask questions about your Yaman Motors
+                                business data.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-layout">
+
+
+                        <!-- CHAT -->
+
+                        <article class="panel ai-chat-panel">
+
+
+                            <div class="ai-header">
+
+                                <div class="ai-avatar">
+                                    ✦
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Yaman Motors AI
+                                    </h3>
+
+                                    <span>
+                                        Gemini-powered business assistant
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="chat-messages"
+                                id="chatMessages">
+
+
+                                <div class="chat-message assistant">
+
+                                    <div class="chat-avatar">
+                                        ✦
+                                    </div>
+
+                                    <div class="chat-bubble">
+
+                                        Hello Yaman. I can help you
+                                        understand vendors, customers,
+                                        products, sales, purchases,
+                                        payments and reports.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <form
+                                class="ai-chat-form"
+                                id="aiChatForm">
+
+
+                                <textarea
+                                    id="aiChatInput"
+                                    rows="2"
+                                    placeholder="Ask something like: Which vendor is cheapest for ENG001?"></textarea>
+
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary">
+
+                                    Send →
+
+                                </button>
+
+                            </form>
+
+                        </article>
+
+
+
+                        <!-- SUGGESTIONS -->
+
+                        <aside class="panel ai-suggestions">
+
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <h3>
+                                        Try asking
+                                    </h3>
+
+                                    <span>
+                                        Business questions
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="suggestion-list">
+
+
+                                <button
+                                    type="button"
+                                    class="suggestion-chip"
+                                    data-prompt="Which vendor is cheapest for ENG001?">
+
+                                    Which vendor is cheapest for ENG001?
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="suggestion-chip"
+                                    data-prompt="How much would I save buying 500 units from the cheapest vendor?">
+
+                                    How much would I save buying 500 units?
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="suggestion-chip"
+                                    data-prompt="Who do we owe money to?">
+
+                                    Who do we owe money to?
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="suggestion-chip"
+                                    data-prompt="What was our revenue this month?">
+
+                                    What was our revenue this month?
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="suggestion-chip"
+                                    data-prompt="Which products have the highest margin?">
+
+                                    Which products have the highest margin?
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="suggestion-chip"
+                                    data-prompt="Show me all transactions with ABC Motors.">
+
+                                    Show transactions with ABC Motors.
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="ai-notice">
+
+                                <strong>
+                                    Verified business data
+                                </strong>
+
+                                <p>
+                                    Financial calculations will be
+                                    performed by the backend and database.
+                                    AI is used to understand and explain
+                                    the result.
+                                </p>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </section>
+
+
+            </main>
+
+
+            <!-- =================================================
+                 FOOTER
+                 ================================================= -->
+
+            <footer class="app-footer">
+
+                <span>
+                    © 2026 Yaman Motors
+                </span>
+
+                <span>
+                    Business Management System
+                </span>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         GLOBAL MODAL
+         ===================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="globalModal"
+        aria-hidden="true"
+        inert>
+
+        <div
+            class="modal"
+            role="dialog"
+            aria-modal="true">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">
+                    Modal
+                </h2>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="modalClose"
+                    aria-label="Close">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <div
+                class="modal-body"
+                id="modalBody">
+            </div>
+
+
+            <div
+                class="modal-footer"
+                id="modalFooter">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         TOAST NOTIFICATIONS
+         ===================================================== -->
+
+    <div
+        class="toast-container"
+        id="toastContainer">
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
